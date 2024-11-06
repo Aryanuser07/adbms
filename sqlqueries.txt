@@ -1,0 +1,28 @@
+CREATE TABLE bakery_items (
+    id SERIAL PRIMARY KEY,
+    item_name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    item_id INT NOT NULL,
+    quantity INT NOT NULL,
+    total_price DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (item_id) REFERENCES bakery_items(id)
+);
+
+INSERT INTO bakery_items (item_name, price) VALUES
+('Chocolate Cake', 15.99),
+('Vanilla Cupcake', 2.49),
+('Blueberry Muffin', 1.99),
+('Cheese Croissant', 3.50),
+('Apple Pie', 12.00),
+('Pecan Tart', 9.99),
+('Fudge Brownie', 2.99),
+('Carrot Cake', 16.50),
+('Baguette', 2.00),
+('Sourdough Bread', 3.00);
+
+SELECT * FROM bakery_items;
+SELECT * FROM orders;
